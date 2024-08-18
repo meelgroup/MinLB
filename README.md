@@ -1,8 +1,8 @@
-### Minimal Model Counting
-__We run our experiment in a linux environment__
+### MinLB
 
 ## Requirements
-Your system must have [clingo](https://github.com/potassco/clingo) and [networkx](https://pypi.org/project/networkx/) installed.
+- [clingo](https://github.com/potassco/clingo)
+- [networkx](https://pypi.org/project/networkx/)
 
 ## Directory Structure
 - ``compute_dlp.py``, ``propagator.py``, ``compute_independent_support.py`` and ``prepare_td.py`` : useful scripts
@@ -14,7 +14,8 @@ Your system must have [clingo](https://github.com/potassco/clingo) and [networkx
 The benchmarks can be found [here](https://zenodo.org/records/13337006).
 
 ## Quick Run Proj-Enum
-(__Install clingo in your system__) ``ProjEnumInput`` folder contains input instances in ProjEnum input format. First unzip:
+__Install clingo in your system__
+``ProjEnumInput`` folder contains input instances in ProjEnum input format. First unzip:
 ```
 unzip ProjEnumInput.zip
 ```
@@ -26,7 +27,8 @@ python decomposition.py -i cut_mcctrack1_002.mcc2020_cnf -c 1
 ```
 
 ## Quick Run HashCounter
-__(Make sure that hashcounter is executable in your machine or run chmod +x hashcounter)__
+__Make sure that hashcounter is executable in your machine or run chmod +x hashcounter__
+
 ``HashCounterInput`` folder contains input instances in HashCounter input format. First unzip:
 
 ```
@@ -40,9 +42,9 @@ cp HashCounterInput/dlp_mcctrack1_002.mcc2020_cnf HashCounterInput/IS_dlp_mcctra
 
 
 ## Run HashCount Step-by-Step
-(__Install clingo in your system__)
+__Install clingo in your system__
 
-(__``chmod +x hashcounter`` if hashcounter is not executable__)
+__``chmod +x hashcounter`` if hashcounter is not executable__
 
 The command to run ``HashCount`` on model counting benchmark:
 ```
@@ -54,9 +56,9 @@ python run_hashcount_on_itemmining.py -i vote.cnf
 ```
 
 ## Run Proj-Enum Step-by-Step
-(__Install clingo in your system__)
+__Install clingo in your system__
 
-(__Make sure that td and flow_cutter_pace17 are executable in your machine (run chmod +x td flow_cutter_pace17)__)
+__Make sure that td and flow_cutter_pace17 are executable in your machine (run chmod +x td flow_cutter_pace17)__
 
 Proj-Enum runs a tree decomposer for ``100s`` to compute a cut of the Boolean formula.
 The command to run ``ProjEnum`` on model counting benchmark:
