@@ -98,15 +98,11 @@ file_pointer = open(final_input_filename, 'r')
 output_file_pointer = open(output_file, 'w')
 # grph = nx.Graph() 
 varset = set()
-aspino_file_pointer = open("aspino_" + file_name , 'w')
 minimal_file_pointer = open("minimal_" + file_name , 'w')
-asprin_file_pointer = open("asprin_" + file_name , 'w')
-aspino_file_pointer.write("p ccnf -\n")
 o_line = "o "
 for _ in range(1, original_set_var + 1):
     o_line = o_line + (str(_) + " ")
 o_line = o_line + ("0")
-aspino_file_pointer.write(o_line + "\n")
 for line in file_pointer:
     if line.startswith("c"):
         if line.startswith("c Number of clauses:"):
@@ -116,13 +112,11 @@ for line in file_pointer:
     elif line.startswith("p cnf"):
         l = line.split()
         output_file_pointer.write("%rule size: {0}\n".format(int(l[-1])))
-        asprin_file_pointer.write("%rule size: {0}\n".format(int(l[-1])))
         minimal_file_pointer.write(line)
         minimal_file_pointer.write("c opt {0}\n".format(original_set_var))
         print("The number of literals: {0} and clauses: {1}".format(l[-2], l[-1]))
     else:
         l = line.split()
-        aspino_file_pointer.write(line)
         minimal_file_pointer.write(line)
         lit_list = []
         for lit in l:
@@ -152,7 +146,6 @@ for line in file_pointer:
         
         # writing the rule 
         output_file_pointer.write(rule_str + "\n")
-        asprin_file_pointer.write(rule_str + "\n")
 
 # writing choice rules
 rule_str = "{"
@@ -164,15 +157,10 @@ for index, atom in enumerate(list(varset)):
 
 rule_str = rule_str[:-1] + "}."  # end of rule
 output_file_pointer.write(rule_str + "\n")
-asprin_file_pointer.write(rule_str + "\n")
 output_file_pointer.write("#heuristic v(X). [1, false]" + "\n")
-asprin_file_pointer.write("#preference(p, subset) { v(X) }. #optimize(p)." + "\n")
 output_file_pointer.write("#show v/1. \n")
-asprin_file_pointer.write("#show v/1. \n")
 
 file_pointer.close()
-aspino_file_pointer.close()
 minimal_file_pointer.close()
 output_file_pointer.close()
-asprin_file_pointer.close()
 

@@ -1,50 +1,27 @@
 ### MinLB
+On lower bound on minimal model count. The related publication: [paper](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/on-lower-bounding-minimal-model-count/8A0A50842E7F625DA60C24A28050434D)
 
-## Requirements
-- [clingo](https://github.com/potassco/clingo)
-- [networkx](https://pypi.org/project/networkx/)
-
-## Directory Structure
-- ``compute_dlp.py``, ``propagator.py``, ``compute_independent_support.py`` and ``prepare_td.py`` : useful scripts
-- ``decomposition.py``: script to run ProjEnum
-- ``hashCount``: Static binary of HashCount
-- ``td`` and ``flow_cutter_pace17``: tools for computing tree decomposition and cut
-
-## Benchmarks
-The benchmarks can be found [here](https://zenodo.org/records/13337006).
-
-## Quick Run Proj-Enum
-__Install clingo in your system__
-``ProjEnumInput`` folder contains input instances in ProjEnum input format. First unzip:
+### Clone the repo
 ```
-unzip ProjEnumInput.zip
+git clone --recurse-submodules git@github.com:meelgroup/MinLB.git
 ```
 
-Run ``ProjEnum`` on input ``mcctrack1_002.mcc2020_cnf``:
+### Dependencies
+You need to install cmake, g++, re2c, and bison.
 ```
-cp ProjEnumInput/cut_mcctrack1_002.mcc2020_cnf .
-python decomposition.py -i cut_mcctrack1_002.mcc2020_cnf -c 1
+sudo apt-get install bison
+sudo apt-get install re2c
+sudo apt install build-essential cmake
 ```
-
-## Quick Run HashCounter
-__Make sure that hashcounter is executable in your machine or run chmod +x hashcounter__
-
-``HashCounterInput`` folder contains input instances in HashCounter input format. First unzip:
-
-```
-unzip HashCounterInput.zip
-```
-Run ``HashCounter`` on input ``mcctrack1_002.mcc2020_cnf`` (``chmod +x hashcounter`` if hashcounter is not executable):
-```
-cp HashCounterInput/dlp_mcctrack1_002.mcc2020_cnf HashCounterInput/IS_dlp_mcctrack1_002.mcc2020_cnf .
-./hashcounter --useind IS_dlp_mcctrack1_002.mcc2020_cnf --asp dlp_mcctrack1_002.mcc2020_cnf
-```
+Install the following python packages
+- [clingo](https://github.com/potassco/clingo): install from [potassco](https://potassco.org/clingo/)
+- [networkx](https://pypi.org/project/networkx/): `pip install networks`
 
 
-## Run HashCount Step-by-Step
-__Install clingo in your system__
+## Run HashCount
+hashcount is a modified implementation of [ApproxASP](https://github.com/meelgroup/ApproxASP). It is added as a submodule in `hashcount` directory. 
 
-__``chmod +x hashcounter`` if hashcounter is not executable__
+First you need to compile `hashcount`. cd to hashcount and see the readme present in `hashcount` directory to compile hashcount. After sucessful compilation, mv hashcount binary to `scripts` directory.
 
 The command to run ``HashCount`` on model counting benchmark:
 ```
@@ -55,7 +32,7 @@ The command to run ``HashCount`` on item mining benchmark:
 python run_hashcount_on_itemmining.py -i vote.cnf
 ```
 
-## Run Proj-Enum Step-by-Step
+## Run Proj-Enum
 __Install clingo in your system__
 
 __Make sure that td and flow_cutter_pace17 are executable in your machine (run chmod +x td flow_cutter_pace17)__
@@ -70,4 +47,20 @@ The command to run ``ProjEnum`` on item mining benchmark:
 python run_projenum_on_itemmining.py -i vote.cnf
 ```
 
+## Benchmarks
+The benchmarks and artifact can be found [here](https://zenodo.org/records/13337006).
+
+## Reference
+```
+@article{KM2024,
+  title={On lower bounding minimal model count},
+  author={Kabir, Mohimenul and Meel, Kuldeep S},
+  journal={Theory and Practice of Logic Programming},
+  volume={24},
+  number={4},
+  pages={586--605},
+  year={2024},
+  publisher={Cambridge University Press}
+}
+```
 
