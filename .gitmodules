@@ -1,0 +1,4 @@
+[submodule "hashcount"]
+	path = hashcount
+	url = git@github.com:meelgroup/ApproxASP.git
+	branch = hashcount
