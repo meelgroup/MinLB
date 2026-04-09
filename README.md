@@ -13,6 +13,12 @@ sudo apt-get install bison
 sudo apt-get install re2c
 sudo apt install build-essential cmake
 ```
+
+You also need to install `gmp` and `mpfr`.
+```
+sudo apt-get install libgmp-dev libmpfr-dev
+```
+
 Install the following python packages
 - [clingo](https://github.com/potassco/clingo): install from [potassco](https://potassco.org/clingo/)
 - [networkx](https://pypi.org/project/networkx/): `pip install networks`
@@ -32,12 +38,9 @@ The command to run ``HashCount`` on item mining benchmark:
 python run_hashcount_on_itemmining.py -i vote.cnf
 ```
 
-## Run Proj-Enum
-__Install clingo in your system__
+## Run ProjEnum
+The tree decomposer of `ProjEnum` is the similar tree decomposition of [SharpSAT-TD][https://github.com/Laakeri/sharpsat-td]. The implementation is added as a submodule in treedecom. To compile it, first cd to treedecom and build it using the command in the README present in `treedecom` directory. After successful compilation, mv td and flow_cutter_pace17 to `scripts` directory, then cd to scripts.
 
-__Make sure that td and flow_cutter_pace17 are executable in your machine (run chmod +x td flow_cutter_pace17)__
-
-Proj-Enum runs a tree decomposer for ``100s`` to compute a cut of the Boolean formula.
 The command to run ``ProjEnum`` on model counting benchmark:
 ```
 python run_projenum_on_modelcounting.py -i mccmc2021_track1_058.cnf
@@ -46,6 +49,8 @@ The command to run ``ProjEnum`` on item mining benchmark:
 ```
 python run_projenum_on_itemmining.py -i vote.cnf
 ```
+
+Proj-Enum runs the tree decomposer for ``100s`` to compute a cut of the Boolean formula.
 
 ## Benchmarks
 The benchmarks and artifact can be found [here](https://zenodo.org/records/13337006).
