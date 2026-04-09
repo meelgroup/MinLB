@@ -39,7 +39,7 @@ python run_hashcount_on_itemmining.py -i vote.cnf
 ```
 
 ## Run ProjEnum
-The tree decomposer of `ProjEnum` is the similar tree decomposition of [SharpSAT-TD][https://github.com/Laakeri/sharpsat-td]. The implementation is added as a submodule in treedecom. To compile it, first cd to treedecom and build it using the command in the README present in `treedecom` directory. After successful compilation, mv td and flow_cutter_pace17 to `scripts` directory, then cd to scripts.
+The tree decomposer of `ProjEnum` is the similar tree decomposition of [SharpSAT-TD](https://github.com/Laakeri/sharpsat-td). The implementation is added as a submodule in treedecom. To compile it, first cd to treedecom and build it using the command in the README present in `treedecom` directory. After successful compilation, mv td and flow_cutter_pace17 to `scripts` directory, then cd to scripts.
 
 The command to run ``ProjEnum`` on model counting benchmark:
 ```
