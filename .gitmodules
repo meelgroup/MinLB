@@ -2,3 +2,7 @@
 	path = hashcount
 	url = git@github.com:meelgroup/ApproxASP.git
 	branch = hashcount
+[submodule "treedecom"]
+	path = treedecom
+	url = git@github.com:mahi045/sharpsat-td.git
+	branch = tree-decomposition
