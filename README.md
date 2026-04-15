@@ -14,20 +14,25 @@ sudo apt-get install re2c
 sudo apt install build-essential cmake
 ```
 
-You also need to install `gmp` and `mpfr`.
+You also need to install `gmp`, `mpfr`, `clasp`, `gringo`, and `python`.
 ```
-sudo apt-get install libgmp-dev libmpfr-dev
+sudo apt-get install libgmp-dev libmpfr-dev gringo clasp python3-pip
 ```
 
 Install the following python packages
-- [clingo](https://github.com/potassco/clingo): install from [potassco](https://potassco.org/clingo/)
+- [clingo](https://github.com/potassco/clingo): `pip install clingo`
 - [networkx](https://pypi.org/project/networkx/): `pip install networks`
 
 
-## Run HashCount
-hashcount is a modified implementation of [ApproxASP](https://github.com/meelgroup/ApproxASP). It is added as a submodule in `hashcount` directory. 
+## Compile
+Build using `build.sh` as follows:
+```
+chmod +x build.sh
+./build.sh
+```
 
-First you need to compile `hashcount`. cd to hashcount and see the readme present in `hashcount` directory to compile hashcount. After sucessful compilation, mv hashcount binary to `scripts` directory.
+## Run HashCount
+First `cd scripts`:
 
 The command to run ``HashCount`` on model counting benchmark:
 ```
@@ -39,7 +44,7 @@ python run_hashcount_on_itemmining.py -i vote.cnf
 ```
 
 ## Run ProjEnum
-The tree decomposer of `ProjEnum` is the similar tree decomposition of [SharpSAT-TD](https://github.com/Laakeri/sharpsat-td). The implementation is added as a submodule in treedecom. To compile it, first cd to treedecom and build it using the command in the README present in `treedecom` directory. After successful compilation, mv td and flow_cutter_pace17 to `scripts` directory, then cd to scripts.
+First `cd scripts`:
 
 The command to run ``ProjEnum`` on model counting benchmark:
 ```
