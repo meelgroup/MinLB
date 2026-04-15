@@ -39,6 +39,11 @@ jobs:
         run: |
           cd scripts
           python run_hashcount_on_itemmining.py -i vote.cnf
+      
+      - name: Sample ProjEnum Run
+        run: |
+          cd scripts
+          python run_projenum_on_itemmining.py -i vote.cnf
 
       - name: Sample ProjEnum Run
         run: |
