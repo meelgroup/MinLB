@@ -23,6 +23,7 @@ jobs:
       - name: Install networkx
         run: |
           pip install networkx
+          pip install clingo
 
       - name: Run build
         run: |
