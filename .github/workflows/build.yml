@@ -44,8 +44,3 @@ jobs:
         run: |
           cd scripts
           python run_projenum_on_modelcounting.py -i mccmc2021_track1_058.cnf
-
-      - name: Sample ProjEnum Run
-        run: |
-          cd scripts
-          python run_projenum_on_itemmining.py -i vote.cnf
