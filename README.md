@@ -55,10 +55,9 @@ The command to run ``ProjEnum`` on item mining benchmark:
 python run_projenum_on_itemmining.py -i vote.cnf
 ```
 
-Proj-Enum runs the tree decomposer for ``100s`` to compute a cut of the Boolean formula.
 
 ## Benchmarks
-The benchmarks and artifact can be found [here](https://zenodo.org/records/13337006).
+The benchmarks and artifact can be found [here](https://zenodo.org/records/19473281).
 
 ## Reference
 ```
