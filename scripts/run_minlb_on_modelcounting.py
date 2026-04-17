@@ -29,7 +29,7 @@ with tempfile.NamedTemporaryFile(dir=".", delete=False) as f:
 cmd = 'python compute_dlp.py -i {0}'.format(input_file)
 out = run(cmd, 100)
 # print(" === Computing a cut === ")
-cmd = './td -decot 100 -decow 100 -tmpdir . -cs 4000 minimal_{0} >> result-{0}'.format(input_file)
+cmd = './td -decot 100 -decow 100 -tmpdir . -cs 4000 minimal_{0}'.format(input_file)
 out = run(cmd, 120)
 print(out)
 # cmd = 'python prepare_td.py -i {0}'.format(input_file)
@@ -64,7 +64,7 @@ if cut_size is not None and cut_size <= 50:
     for line in out.splitlines():
         if line.startswith("Final count:"):
             cnt = line
-            print("projenum: {0}".format(line))
+            print("minlb: projenum: {0}".format(line))
 
     if cnt is None:
         print("No estimate found in the projenum.")
@@ -83,7 +83,7 @@ else:
     for line in out.splitlines():
         if line.startswith("After the iteration, the lower bound:"):
             cnt = line
-            print("hashcount: {0}".format(line))
+            print("minlb: hashcount: {0}".format(line))
 
     if cnt is None:
         print("No estimate found in the hashcount.")

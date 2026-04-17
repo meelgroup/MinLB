@@ -52,7 +52,7 @@ with open("minimal_" + input_file, 'r+') as cnffile:
     cnffile.write(cut_string.rstrip() + '\n')
     cnffile.close
 
-if cut_size is not None and cut_size <= 50:
+if cut_size is not None and cut_size <= 25:
     # we can run ProjEnum
     # print(" === Running ProjEnum === ")
     cmd = 'python decomposition.py -i cut_{0} -c 1'.format(input_file)
