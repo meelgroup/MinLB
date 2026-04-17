@@ -31,7 +31,7 @@ out = run(cmd, 100)
 # print(" === Computing a cut === ")
 cmd = './td -decot 100 -decow 100 -tmpdir . -cs 4000 minimal_{0}'.format(input_file)
 out = run(cmd, 120)
-print(out)
+# print(out)
 # cmd = 'python prepare_td.py -i {0}'.format(input_file)
 # out = run(cmd, 100)
 
@@ -59,7 +59,7 @@ if cut_size is not None and cut_size <= 50:
     # print(" === Running ProjEnum === ")
     cmd = 'python decomposition.py -i cut_{0} -c 1'.format(input_file)
     out = run(cmd, 5000)
-    print(out)
+    # print(out)
     cnt = None
     for line in out.splitlines():
         if line.startswith("Final count:"):
@@ -71,13 +71,14 @@ if cut_size is not None and cut_size <= 50:
 
     os.system(f'rm -f {input_file} cut_{input_file} minimal_{input_file}')
 else:
+    # we can run Hashcount
     # print(" === Computing independent suport === ")
     cmd = 'python compute_independent_support.py -i dlp_{0}'.format(input_file)
     out = run(cmd, 250)
     # print(" === Running HashCount === ")
     cmd = './hashcount --useind IS_dlp_{0} --asp dlp_{0}'.format(input_file)
     out = run(cmd, 5000)
-    print(out)
+    # print(out)
 
     cnt = None
     for line in out.splitlines():

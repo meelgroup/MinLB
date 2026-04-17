@@ -52,12 +52,12 @@ with open("minimal_" + input_file, 'r+') as cnffile:
     cnffile.write(cut_string.rstrip() + '\n')
     cnffile.close
 
-if cut_size is not None and cut_size <= 25:
+if cut_size is not None and cut_size <= 50:
     # we can run ProjEnum
     # print(" === Running ProjEnum === ")
     cmd = 'python decomposition.py -i cut_{0} -c 1'.format(input_file)
     out = run(cmd, 5000)
-    print(out)
+    # print(out)
     cnt = None
     for line in out.splitlines():
         if line.startswith("Final count:"):
@@ -70,9 +70,10 @@ if cut_size is not None and cut_size <= 25:
     os.system(f'rm -f {input_file} cut_{input_file} minimal_{input_file}')
 
 else:
+    # we can run Hashcount
     cmd = './hashcount --useind IS_dlp_{0} --asp dlp_{0}'.format(input_file)
     out = run(cmd, 5000)
-    print(out)
+    # print(out)
     cnt = None
     for line in out.splitlines():
         if line.startswith("After the iteration, the lower bound:"):
