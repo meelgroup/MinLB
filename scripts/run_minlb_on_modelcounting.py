@@ -82,7 +82,7 @@ else:
 
     cnt = None
     for line in out.splitlines():
-        if line.startswith("After the iteration, the lower bound:"):
+        if line.startswith("After the iteration, the lower bound:") or line.startswith("The exact number of solution:"):
             cnt = line
             print("minlb: hashcount: {0}".format(line))
 

@@ -34,7 +34,7 @@ cmd = './hashcount --useind IS_dlp_{0} --asp dlp_{0}'.format(input_file)
 out = run(cmd, 5000)
 cnt = None
 for line in out.splitlines():
-    if line.startswith("After the iteration, the lower bound:"):
+    if line.startswith("After the iteration, the lower bound:") or line.startswith("The exact number of solution:"):
         cnt = line
         print("hashcount: {0}".format(line))
 
