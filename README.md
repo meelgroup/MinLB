@@ -69,7 +69,7 @@ python run_minlb_on_itemmining.py -i vote.cnf
 
 
 ## Benchmarks
-The benchmarks and artifact can be found [here](https://zenodo.org/records/19607802).
+The benchmarks and artifact can be found [here](https://zenodo.org/records/19665509).
 
 ## Reference
 ```
