@@ -34,7 +34,7 @@ chmod +x build.sh
 ## Run HashCount
 First `cd scripts`:
 
-The command to run ``HashCount`` on model counting benchmark:
+To run ``HashCount``, execute:
 ```
 python run_hashcount.py -i mccmc2021_track1_058.cnf
 ```
@@ -42,7 +42,7 @@ python run_hashcount.py -i mccmc2021_track1_058.cnf
 ## Run ProjEnum
 First `cd scripts`:
 
-The command to run ``ProjEnum`` on model counting benchmark:
+To run ``ProjEnum``, execute:
 ```
 python run_projenum.py -i mccmc2021_track1_058.cnf
 ```
@@ -50,7 +50,7 @@ python run_projenum.py -i mccmc2021_track1_058.cnf
 ## Run MinLB
 First `cd scripts`:
 
-The command to run ``MinLB`` on model counting benchmark:
+To run ``MinLB``, execute:
 ```
 python run_minlb.py -i mccmc2021_track1_058.cnf
 ```
