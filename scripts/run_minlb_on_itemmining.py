@@ -31,7 +31,7 @@ cmd = 'python propagator.py -i {0}'.format(input_file)
 
 out = run(cmd, 100)
 # print(" === Computing a cut === ")
-cmd = './td -decot 50 -decow 100 -tmpdir . -cs 3500 minimal_{0}'.format(input_file)
+cmd = './td -decot 100 -decow 100 -tmpdir . -cs 3500 minimal_{0}'.format(input_file)
 out = run(cmd, 120)
 cut_size = None
 cut_string = ""

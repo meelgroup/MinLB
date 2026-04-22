@@ -36,6 +36,7 @@ out = run(cmd, 120)
 # out = run(cmd, 100)
 
 cut_size = None
+threshold = 50
 cut_string = ""
 for line in out.splitlines():
     if line.startswith("c the size of cut:"):
@@ -54,7 +55,7 @@ with open("minimal_" + input_file, 'r+') as cnffile:
     cnffile.write(cut_string.rstrip() + '\n')
     cnffile.close()
 
-if cut_size is not None and cut_size <= 50:
+if cut_size is not None and cut_size <= threshold:
     # we can run ProjEnum
     # print(" === Running ProjEnum === ")
     cmd = 'python decomposition.py -i cut_{0} -c 1'.format(input_file)

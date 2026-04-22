@@ -48,11 +48,7 @@ First `cd scripts`:
 
 The command to run ``ProjEnum`` on model counting benchmark:
 ```
-python run_projenum_on_modelcounting.py -i mccmc2021_track1_058.cnf
-```
-The command to run ``ProjEnum`` on item mining benchmark:
-```
-python run_projenum_on_itemmining.py -i vote.cnf
+python run_projenum.py -i mccmc2021_track1_058.cnf
 ```
 
 ## Run MinLB
@@ -60,11 +56,7 @@ First `cd scripts`:
 
 The command to run ``MinLB`` on model counting benchmark:
 ```
-python run_minlb_on_modelcounting.py -i mccmc2021_track1_058.cnf
-```
-The command to run ``MinLB`` on item mining benchmark:
-```
-python run_minlb_on_itemmining.py -i vote.cnf
+python run_minlb.py -i mccmc2021_track1_058.cnf
 ```
 
 

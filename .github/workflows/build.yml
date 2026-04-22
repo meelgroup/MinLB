@@ -43,19 +43,9 @@ jobs:
       - name: Sample ProjEnum Run
         run: |
           cd scripts
-          python run_projenum_on_itemmining.py -i vote.cnf
-
-      - name: Sample ProjEnum Run
-        run: |
-          cd scripts
-          python run_projenum_on_modelcounting.py -i mccmc2021_track1_058.cnf
+          python run_projenum.py -i mccmc2021_track1_058.cnf
 
       - name: Sample MinLB Run
         run: |
           cd scripts
-          python run_minlb_on_modelcounting.py -i mccmc2021_track1_058.cnf
-
-      - name: Sample MinLB Run
-        run: |
-          cd scripts
-          python run_minlb_on_itemmining.py -i vote.cnf
+          python run_minlb.py -i mccmc2021_track1_058.cnf
