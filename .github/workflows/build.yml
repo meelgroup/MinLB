@@ -29,6 +29,16 @@ jobs:
         run: |
           chmod +x build.sh
           ./build.sh
+
+      - name: Sample MinLB Run
+        run: |
+          cd scripts
+          python run_minlb.py -i mccmc2021_track1_058.cnf
+
+      - name: Sample MinLB Run
+        run: |
+          cd scripts
+          python run_minlb.py -i mccmc2021_track1_058.cnf --thresh 50
           
       - name: Sample Hashcount run
         run: |
@@ -44,18 +54,3 @@ jobs:
         run: |
           cd scripts
           python run_projenum.py -i mccmc2021_track1_058.cnf
-
-      - name: Sample ProjEnum Run
-        run: |
-          cd scripts
-          python run_projenum.py -i minimal_vote.cnf
-
-      - name: Sample MinLB Run
-        run: |
-          cd scripts
-          python run_minlb.py -i mccmc2021_track1_058.cnf
-
-      - name: Sample MinLB Run
-        run: |
-          cd scripts
-          python run_minlb.py -i minimal_vote.cnf
