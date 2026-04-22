@@ -26,11 +26,16 @@ with tempfile.NamedTemporaryFile(dir=".", delete=False) as f:
     os.system("cp {0} {1}".format(args.i, temp_file))
     input_file = os.path.basename(temp_file)
 
+if os.path.exists(f"IS_dlp_{input_file}"):
+    os.remove(f"IS_dlp_{input_file}")
+
 cmd = 'python compute_dlp.py -i {0}'.format(input_file)
 out = run(cmd, 100)
-# print(" === Computing independent suport === ")
-cmd = 'python compute_independent_support.py -i dlp_{0}'.format(input_file)
-out = run(cmd, 250)
+if not os.path.exists(f"IS_dlp_{input_file}"):
+    # print(" === Computing independent suport === ")
+    cmd = 'python compute_independent_support.py -i dlp_{0}'.format(input_file)
+    out = run(cmd, 250)
+
 # print(" === Running HashCount === ")
 cmd = './hashcount --useind IS_dlp_{0} --asp dlp_{0}'.format(input_file)
 out = run(cmd, 5000)
@@ -42,6 +47,6 @@ for line in out.splitlines():
         print("hashcount: {0}".format(line))
 
 if cnt is None:
-    print("No estimate found in the hashcount.")
+    print("No estimate found from hashcount.")
 
 os.system(f'rm -f {input_file} dlp_{input_file} IS_dlp_{input_file}')

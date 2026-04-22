@@ -33,19 +33,29 @@ jobs:
       - name: Sample Hashcount run
         run: |
           cd scripts
-          python run_hashcount_on_modelcounting.py -i mccmc2021_track1_058.cnf
+          python run_hashcount.py -i mccmc2021_track1_058.cnf
 
       - name: Sample Hashcount run
         run: |
           cd scripts
-          python run_hashcount_on_itemmining.py -i vote.cnf
+          python run_hashcount.py -i minimal_vote.cnf
 
       - name: Sample ProjEnum Run
         run: |
           cd scripts
           python run_projenum.py -i mccmc2021_track1_058.cnf
 
+      - name: Sample ProjEnum Run
+        run: |
+          cd scripts
+          python run_projenum.py -i minimal_vote.cnf
+
       - name: Sample MinLB Run
         run: |
           cd scripts
           python run_minlb.py -i mccmc2021_track1_058.cnf
+
+      - name: Sample MinLB Run
+        run: |
+          cd scripts
+          python run_minlb.py -i minimal_vote.cnf

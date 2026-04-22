@@ -35,35 +35,36 @@ for line in open(file_name):
         
         transaction_id += 1
 
-asp_file_name = "dlp_" + file_name
-IS_file_name = "IS_dlp_" + file_name
+# asp_file_name = "dlp_" + file_name
+# IS_file_name = "IS_dlp_" + file_name
 cut_file_name = "minimal_" + file_name
-asp_file = open(asp_file_name, 'w')
-IS_file = open(IS_file_name, 'w')
+# asp_file = open(asp_file_name, 'w')
+# IS_file = open(IS_file_name, 'w')
 cut_file = open(cut_file_name, 'w')
 cut_str = "p cnf {0} {1}\n".format(int(max(union_of_items)) + transaction_id - 1, transaction_id - 1)
 cut_file.write(cut_str)
 transaction_id = int(max(union_of_items))
 
+IS_str = "c ind "
+for item in union_of_items:
+    IS_str += "{0} ".format(item)
+IS_str += "0\n"
+cut_file.write(IS_str)
+
 for index, transaction in enumerate(transaction_items):
-    rule_str = "t({0})".format(index + 1)
+    # rule_str = "t({0})".format(index + 1)
     clause_str = "{0} ".format(transaction_id + index + 1)
     if len(transaction_items) > 0:
-        rule_str += "".join("; i(" + str(_) + ")" for _ in transaction)
+        # rule_str += "".join("; i(" + str(_) + ")" for _ in transaction)
         clause_str += "".join(str(_) + " " for _ in transaction)
-    rule_str += ".\n"
+    # rule_str += ".\n"
     clause_str += "0\n"
-    asp_file.write(rule_str)
+    # asp_file.write(rule_str)
     cut_file.write(clause_str)
 
 
-IS_str = "c ind "
-for item in union_of_items:
-    IS_str += "i({0}) ".format(item)
-IS_str += "0\n"
-IS_file.write(IS_str)
-IS_file.close()
-asp_file.close()
+# IS_file.close()
+# asp_file.close()
 cut_file.close()
 
 # ctl.load(asp_file_name)

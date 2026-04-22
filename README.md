@@ -36,11 +36,7 @@ First `cd scripts`:
 
 The command to run ``HashCount`` on model counting benchmark:
 ```
-python run_hashcount_on_modelcounting.py -i mccmc2021_track1_058.cnf
-```
-The command to run ``HashCount`` on item mining benchmark:
-```
-python run_hashcount_on_itemmining.py -i vote.cnf
+python run_hashcount.py -i mccmc2021_track1_058.cnf
 ```
 
 ## Run ProjEnum

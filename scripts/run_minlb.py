@@ -2,6 +2,7 @@ import os, argparse, tempfile
 import subprocess as sp
 parser = argparse.ArgumentParser()
 parser.add_argument('-i','--i', help='input CNF file', required=True)
+parser.add_argument('-thresh','--thresh', help='threshold cut size', default=25, required=False)
 args = parser.parse_args()
 file_name = args.i
 
@@ -26,6 +27,9 @@ with tempfile.NamedTemporaryFile(dir=".", delete=False) as f:
     os.system("cp {0} {1}".format(args.i, temp_file))
     input_file = os.path.basename(temp_file)
 
+if os.path.exists(f"IS_dlp_{input_file}"):
+    os.remove(f"IS_dlp_{input_file}")
+
 cmd = 'python compute_dlp.py -i {0}'.format(input_file)
 out = run(cmd, 100)
 # print(" === Computing a cut === ")
@@ -36,7 +40,7 @@ out = run(cmd, 120)
 # out = run(cmd, 100)
 
 cut_size = None
-threshold = 50
+threshold = int(args.thresh)
 cut_string = ""
 for line in out.splitlines():
     if line.startswith("c the size of cut:"):
@@ -70,12 +74,13 @@ if cut_size is not None and cut_size <= threshold:
     if cnt is None:
         print("No estimate found in the projenum.")
 
-    os.system(f'rm -f {input_file} cut_{input_file} minimal_{input_file}')
+    os.system(f'rm -f {input_file} cut_{input_file} dlp_{input_file} minimal_{input_file}')
 else:
-    # we can run Hashcount
-    # print(" === Computing independent suport === ")
-    cmd = 'python compute_independent_support.py -i dlp_{0}'.format(input_file)
-    out = run(cmd, 250)
+    # we run Hashcount
+    if not os.path.exists(f"IS_dlp_{input_file}"):
+        # print(" === Computing independent suport === ")   
+        cmd = 'python compute_independent_support.py -i dlp_{0}'.format(input_file)
+        out = run(cmd, 250)
     # print(" === Running HashCount === ")
     cmd = './hashcount --useind IS_dlp_{0} --asp dlp_{0}'.format(input_file)
     out = run(cmd, 5000)
@@ -90,4 +95,4 @@ else:
     if cnt is None:
         print("No estimate found in the hashcount.")
 
-    os.system(f'rm -f {input_file} dlp_{input_file} IS_dlp_{input_file}')
+    os.system(f'rm -f {input_file} dlp_{input_file} IS_dlp_{input_file} minimal_{input_file} {new_input_file}')

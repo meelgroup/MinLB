@@ -11,12 +11,23 @@ def compute_disjunctive_program(file_name):
     file_pointer = open(file_name, 'r')
     output_file_pointer = open(output_file, 'w')
     for line in file_pointer:
-        if line.startswith("c"):
-            continue
-        elif line.startswith("p cnf"):
+        if line.startswith("p cnf"):
             l = line.split()
             output_file_pointer.write("%rule size: {0}\n".format(int(l[-1])))
             # print("The number of literals: {0} and clauses: {1} [Unpreprocessed]".format(l[-2], l[-1]))
+        elif line.startswith("c ind"):
+            # for some benchmarks (e.g., item mining), we can compute independent support easily
+            # prepare independent support file
+            IS_file = open("IS_dlp_" + file_name, 'w') 
+            numbers = [int(x) for x in line.split()[2:] if int(x) != 0]
+            IS_str = "c ind "
+            for item in numbers:
+                IS_str += "v{0} ".format(item)
+            IS_str += "0\n"
+            IS_file.write(IS_str)
+            IS_file.close()
+        elif line.startswith("c"):
+            continue
         else:
             l = line.split()
             lit_list = []

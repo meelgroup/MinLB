@@ -39,6 +39,6 @@ for line in out.splitlines():
         print("hashcount: {0}".format(line))
 
 if cnt is None:
-    print("No estimate found in the hashcount.")
+    print("No estimate found from hashcount.")
 
 os.system(f'rm -f {input_file} IS_dlp_{input_file} dlp_{input_file}')
