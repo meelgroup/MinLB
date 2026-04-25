@@ -31,8 +31,28 @@ out = run(cmd, 100)
 # print(" === Computing a cut === ")
 cmd = './td -decot 100 -decow 100 -tmpdir . -cs 4000 minimal_{0} >> result-{0}'.format(input_file)
 out = run(cmd, 120)
-cmd = 'python prepare_td.py -i {0}'.format(input_file)
-out = run(cmd, 100)
+# cmd = 'python prepare_td.py -i {0}'.format(input_file)
+# out = run(cmd, 100)
+
+cut_size = None
+cut_string = ""
+for line in out.splitlines():
+    if line.startswith("c the size of cut:"):
+        l = line.split()
+        print("minlb: cut size: {0}".format(l[-1]))
+        cut_size = int(l[-1])
+    elif line.startswith("c tree decomposition cut:"):
+        cut_string = line.replace("c tree decomposition cut:", "c ind")
+        cut_string = cut_string.replace(",", " ")
+
+new_input_file = "cut_" + input_file
+with open("minimal_" + input_file, 'r+') as cnffile:
+    content = cnffile.read()
+    cnffile = open(new_input_file, 'w')
+    cnffile.write(content)
+    cnffile.write(cut_string.rstrip() + '\n')
+    cnffile.close()
+
 # print(" === Running ProjEnum === ")
 cmd = 'python decomposition.py -i cut_{0} -c 1'.format(input_file)
 out = run(cmd, 5000)
@@ -45,4 +65,4 @@ for line in out.splitlines():
 if cnt is None:
     print("No estimate found in the projenum.")
 
-os.system(f'rm -f {input_file} cut_{input_file} minimal_{input_file}')
+os.system(f'rm -f {input_file} dlp_{input_file} cut_{input_file} minimal_{input_file}')

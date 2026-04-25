@@ -58,8 +58,10 @@ To run ``ProjEnum``, execute:
 python run_projenum.py -i mccmc2021_track1_058.cnf
 ```
 
+ProjEnum runs a tree decomposer for `100` seconds. 
+
 ## Benchmarks
-The benchmarks and artifact can be found [here](https://zenodo.org/records/19665509).
+The benchmarks and artifact can be found [here](https://zenodo.org/records/19757334).
 
 ## Reference
 ```
